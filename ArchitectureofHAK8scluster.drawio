@@ -1,9 +1,120 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.12">
   <diagram name="Page-1" id="uFeWuqt6OcFPvH-jtq9w">
-    <mxGraphModel>
+    <mxGraphModel dx="1714" dy="1250" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-3" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="FQdi9Tu7ijA2wVkWtMhC-1" target="FQdi9Tu7ijA2wVkWtMhC-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-1" value="External Traffic(End Users)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="-14" width="224" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-5" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="FQdi9Tu7ijA2wVkWtMhC-2" target="FQdi9Tu7ijA2wVkWtMhC-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-2" value="&lt;b&gt;Keepalived&lt;/b&gt; (Virtual IP for HA)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="109" y="44" width="224" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-7" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="FQdi9Tu7ijA2wVkWtMhC-4" target="FQdi9Tu7ijA2wVkWtMhC-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-4" value="&lt;b&gt;HAProxy Load Balancer&amp;nbsp;&lt;/b&gt;&lt;div&gt;&lt;br&gt;--2 Nodes (Active/Backup)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="109" y="97" width="223" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-6" value="&amp;nbsp;&lt;b&gt;Ambassador API Gateway&lt;/b&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp;uses worker nodes&lt;/b&gt;&lt;br&gt;&amp;nbsp;- Rate Limiting &amp;amp; Throttling&amp;nbsp;&lt;br&gt;&amp;nbsp;- Authentication &amp;amp; JWT Verification&amp;nbsp;&lt;br&gt;&amp;nbsp;- Observability (VictoriaMetrics)&amp;nbsp;&lt;br&gt;&amp;nbsp;- Advanced Traffic Routing (L7)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="168" width="226" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-11" value="&lt;b&gt;Kubernetes Control Plane (HA)&lt;/b&gt;&lt;br&gt;etcd Cluster (Stores Cluster state)&lt;br&gt;API server (Handles kubectl/API)&lt;br&gt;Controller Manager (Manages Nodes)&lt;div&gt;Scheduler(Schedules Pods)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;--3 nodes to ensure High Availability&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="299" width="223" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-13" value="&lt;b&gt;Worker Nodes (10-12) [Auto-scalable]&lt;/b&gt;&lt;div&gt;-App Pods -Helm app -Victoria metrics &amp;amp; Grafana -ECK -K8s dashboard -Other Applications&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-25" y="467" width="510" height="37" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-16" value="&lt;b&gt;Cilium CNI Plugin&lt;/b&gt;&lt;div&gt;--&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Manages Pod-&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-Pod, Pod-&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-Service Communication&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="45" y="433" width="364" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-21" value="Worker nodes - 1" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-119" y="504" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-22" value="Worker nodes - 2" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="19" y="504" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-23" value="Worker nodes - 3" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="167" y="504" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-24" value="Worker nodes - 4" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;glass=0;strokeColor=default;dashed=1;dashPattern=12 12;" vertex="1" parent="1">
+          <mxGeometry x="314" y="504" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-25" value="Worker nodes - 5" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=12 12;" vertex="1" parent="1">
+          <mxGeometry x="464" y="504" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-29" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="222" y="404" as="sourcePoint" />
+            <mxPoint x="221.5" y="433" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-32" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="223" y="265" as="sourcePoint" />
+            <mxPoint x="223" y="298" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-34" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-59.5" y="616" as="sourcePoint" />
+            <mxPoint x="-59.5" y="562" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-35" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="79" y="618" as="sourcePoint" />
+            <mxPoint x="78.5" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-36" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="226.5" y="618" as="sourcePoint" />
+            <mxPoint x="226.5" y="564" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-37" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="373.5" y="618" as="sourcePoint" />
+            <mxPoint x="373.5" y="564" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-38" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="523.5" y="618" as="sourcePoint" />
+            <mxPoint x="523.5" y="564" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="523.5" y="589" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-39" value="&lt;b&gt;Kubernetes Dashboard with RBAC&lt;/b&gt;&lt;br&gt;- Accessible via NGINX Ingress controller&lt;br&gt;- Service account and role based access&lt;div&gt;-Admins (full access)&lt;/div&gt;&lt;div&gt;- Developers (Namespace-specific access)&lt;/div&gt;&lt;div&gt;-Monitoring users (Read-only access)&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-119" y="696" width="710" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-42" value="&lt;b&gt;Dedicated ECK node group&amp;nbsp;&lt;/b&gt;&lt;div&gt;-Elasticsearch cluster&lt;/div&gt;&lt;div&gt;- Kibana (Visualizing logs)&lt;/div&gt;&lt;div&gt;-Logstash (Log processing)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-119" y="804" width="711" height="61" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-44" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="139" y="536" as="sourcePoint" />
+            <mxPoint x="166" y="536" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="154" y="538" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-46" value="&lt;b&gt;3 - 5 worker nodes for Applications&lt;/b&gt;&lt;div&gt;- To h&lt;span style=&quot;text-align: start; caret-color: rgb(0, 0, 0); background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ost a application with Node affinity&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-align: start; caret-color: rgb(0, 0, 0); background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- To h&lt;/span&gt;&lt;span style=&quot;text-align: start; caret-color: rgb(0, 0, 0); background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ost a application using Helm&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-align: start; caret-color: rgb(0, 0, 0); background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-align: start; caret-color: rgb(0, 0, 0); background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Deploy application with HPA and VPA&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-align: start; caret-color: rgb(0, 0, 0); background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-align: start; caret-color: rgb(0, 0, 0); background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Build a basic frontend using dockerfile and deploy the same in the k8s&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-119" y="618" width="710" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="FQdi9Tu7ijA2wVkWtMhC-47" value="&lt;b&gt;Victoria metrics and grafana&amp;nbsp;&lt;/b&gt;&lt;div&gt;-Victoria metrics is a&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;time-series database optimized for large-scale monitoring and observability&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot; data-end=&quot;154&quot; data-start=&quot;143&quot;&gt;Grafana&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt; is an visualization tool that queries and displays metrics from Victoria Metrics, for real-time monitoring and analysis.&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-119" y="865" width="715" height="59" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
